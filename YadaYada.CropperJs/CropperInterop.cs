@@ -14,7 +14,7 @@ public class CropperInterop : IAsyncDisposable
         _moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/YadaYada.CropperJs/cropper.js").AsTask());
     }
 
-    public async Task<CropperInstance> CreatePopperAsync(ElementReference imageReference, Options options)
+    public async Task<CropperInstance> CreateCropperAsync(ElementReference imageReference, Options options)
     {
         var objRef = DotNetObjectReference.Create(options);
         var cropperWrapper = await _jsRuntime.InvokeAsync<IJSInProcessObjectReference>("import", "./_content/YadaYada.CropperJs/cropperWrapper.js");

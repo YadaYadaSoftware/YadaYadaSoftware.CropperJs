@@ -19,10 +19,15 @@ namespace YadaYada.CropperJs
         [Parameter]
         public string ImageSource { get; set; } = null!;
 
+        private CropperInstance _cropperInstance = null;
+
         private async Task ImageLoaded(ProgressEventArgs arg)
         {
             Logger.LogInformation(nameof(ImageLoaded));
-            await CropperInterop.CreatePopperAsync(_image, new Options());
+            if (_cropperInstance == null)
+            {
+                _cropperInstance = await CropperInterop.CreateCropperAsync(_image, new Options());
+            }
         }
     }
 }
