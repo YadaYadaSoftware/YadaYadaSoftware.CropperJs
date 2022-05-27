@@ -1,12 +1,12 @@
-﻿export function createCropper(reference, options) {
+﻿export function createCropper(reference, outsideOptions, objRef) {
 
-    console.log('function(helpers)');
+    'use strict';
 
     var Cropper = window.Cropper;
     var URL = window.URL || window.webkitURL;
     var container = document.querySelector('.img-container');
-    var image = container.getElementsByTagName('img').item(0);
-    image = reference;
+    //var image = container.getElementsByTagName('img').item(0);
+    var image = reference;
     var download = document.getElementById('download');
     var actions = document.getElementById('actions');
     var dataX = document.getElementById('dataX');
@@ -21,12 +21,6 @@
         preview: '.img-preview',
         ready: function (e) {
             console.log(e.type);
-            helpers.invokeMethodAsync("GetCrop").then(data => {
-                console.log(data);
-                var x = { x: data.x, y: data.y, width: data.width, height: data.height };
-                cropper.setData(x);
-
-            });
         },
         cropstart: function (e) {
             console.log(e.type, e.detail.action);
@@ -35,9 +29,9 @@
             console.log(e.type, e.detail.action);
         },
         cropend: function (e) {
-            console.log(e.type, e.detail);
+            console.log(e.type, e.detail.action);
             var cropData = cropper.getData();
-            helpers.invokeMethodAsync("CropEnd", cropData.x, cropData.y, cropData.width, cropData.height);
+            objRef.invokeMethodAsync('cropend', cropData);
         },
         crop: function (e) {
             var data = e.detail;
@@ -49,21 +43,21 @@
             dataRotate.value = typeof data.rotate !== 'undefined' ? data.rotate : '';
             dataScaleX.value = typeof data.scaleX !== 'undefined' ? data.scaleX : '';
             dataScaleY.value = typeof data.scaleY !== 'undefined' ? data.scaleY : '';
+            objRef.invokeMethodAsync('crop', data );
         },
         zoom: function (e) {
             console.log(e.type, e.detail.ratio);
-            helpers.invokeMethodAsync("Zoom", e.detail.ratio);
-
-
+            objRef.invokeMethodAsync('zoom', e.detail.ratio);
         }
     };
+
     var cropper = new Cropper(image, options);
     var originalImageURL = image.src;
     var uploadedImageType = 'image/jpeg';
     var uploadedImageName = 'cropped.jpg';
     var uploadedImageURL;
 
-    // Tooltip // popper.js
+    // Tooltip
     //$('[data-toggle="tooltip"]').tooltip();
 
     // Buttons
@@ -177,20 +171,7 @@
                     if (cropped && options.viewMode > 0) {
                         cropper.clear();
                     }
-                    console.log(data);
-                    helpers.invokeMethodAsync("get_Rotation").then(r => {
-                        r += +(data.option);
-                        console.log('r=' + r);
-                        if (r >= 360) {
-                            r -= 360;
-                        }
-                        console.log('r=' + r);
-                        if (r < 0) {
-                            r += 360;
-                        }
-                        console.log('r=' + r);
-                        helpers.invokeMethodAsync("set_Rotation", r);
-                    });
+
                     break;
 
                 case 'getCroppedCanvas':
@@ -328,6 +309,11 @@
         inputImage.parentNode.className += ' disabled';
     }
 
+
     return cropper;
 
+}
+
+export function zoom(instance, scale) {
+    instance.zoom(scale, null);
 }

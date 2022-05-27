@@ -1,8 +1,34 @@
 ﻿@page "/cropper"
-<h3>CropperPage</h3>
+<h3>Cropper Example</h3>
 
-@code {
+<Cropper ImageSource="images/picture.jpg" 
+         @ref="_cropper" 
+         @bind-CropX="@this.Model.X" 
+         @bind-CropY="@this.Model.Y" 
+         @bind-CropWidth="@this.Model.Width" 
+         @bind-CropHeight="@this.Model.Height" 
+         @bind-Zoom="@this.Model.Zoom" 
+         @bind-Rotation="@this.Model.Rotation"/>
 
-}
 
-<Cropper ImageSource="images/picture.jpg"/>
+<div>
+    <label for="CropX">Crop X:</label>
+    <input id="CropX" type="text" @bind="@this.Model.X"/>
+    <label for="CropY">Crop Y:</label>
+    <input id="CropY" type="text" @bind="@this.Model.Y"/>
+    <label for="CropWidth">Crop Width:</label>
+    <input id="CropWidth" tWidthpe="text" @bind="@this.Model.Width"/>
+    <label for="CropHeight">Crop Height:</label>
+    <input id="CropHeight" tHeightpe="text" @bind="@this.Model.Height"/>
+    <label for="Rotation">Rotation:</label>
+    <input id="Rotation" type="text" @bind="@this.Model.Rotation"/>
+    <label for="Zoom">Zoom:</label>
+    <input id="Zoom" type="text" @bind="@this.Model.Zoom"/>
+</div>
+<div>
+    <button @onclick="()=>ZoomTo(2)">Zoom To 200%</button>
+    <button @onclick="()=>ZoomTo(3)">Zoom To 300%</button>
+</div>
+<div>
+    <textarea @bind="@Log" style="height: 200px; width: 100%"/>
+</div>
