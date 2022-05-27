@@ -1,3 +1,14 @@
-﻿<div class="my-component">
-    This component is defined in the <strong>YadaYada.CropperJs</strong> library.
+﻿@inject ExampleJsInterop _exampleJsInterop;
+
+@code {
+    private async Task OnClickHandler(MouseEventArgs arg)
+    {
+        this._text = new MarkupString(await this._exampleJsInterop.Prompt("You clicked on me.  You got something to say?"));
+    }
+
+    MarkupString _text = new MarkupString("This component is defined in the <strong>YadaYada.CropperJs</strong> library.");
+}
+
+<div class="my-component" @onclick="@OnClickHandler">
+    @_text
 </div>
