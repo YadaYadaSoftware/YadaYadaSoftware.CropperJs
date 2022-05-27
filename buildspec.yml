@@ -7,4 +7,4 @@ phases:
       - VERSION="${MAJOR}.$(date +%j).${CODEBUILD_BUILD_NUMBER}"
   build:
     commands:
-      - dotnet pack
+      - dotnet build 
