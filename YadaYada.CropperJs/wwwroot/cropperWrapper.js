@@ -1,12 +1,12 @@
 ﻿export function createCropper(reference, options) {
 
-    return null;
     console.log('function(helpers)');
 
     var Cropper = window.Cropper;
     var URL = window.URL || window.webkitURL;
     var container = document.querySelector('.img-container');
     var image = container.getElementsByTagName('img').item(0);
+    image = reference;
     var download = document.getElementById('download');
     var actions = document.getElementById('actions');
     var dataX = document.getElementById('dataX');
