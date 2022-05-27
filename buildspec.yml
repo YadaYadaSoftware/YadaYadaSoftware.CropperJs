@@ -5,9 +5,12 @@ phases:
   install:
     commands:
       - VERSION="${MAJOR}.$(date +%j).${CODEBUILD_BUILD_NUMBER}"
+      - TOKEN=`aws codeartifact get-authorization-token  --domain yadayada --query authorizationToken --output text`
+      - dotnet nuget add source --username aws --password $TOKEN --store-password-in-clear-text $YADAYADA_REPO
   build:
     commands:
       - dotnet build 
   post_build:
     commands:
-      - dotnet nuget push YadaYada.CropperJs/bin/Debug/*.nupkg --api-key $NUGET_API_KEY  --source https://api.nuget.org/v3/index.json
+      #- dotnet nuget push YadaYada.CropperJs/bin/Debug/*.nupkg --api-key $NUGET_API_KEY  --source https://api.nuget.org/v3/index.json
+      - dotnet nuget push YadaYada.CropperJs/bin/Debug/*.nupkg --source $YADAYADA_REPO
