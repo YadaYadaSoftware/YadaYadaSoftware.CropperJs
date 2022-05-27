@@ -11,17 +11,18 @@ namespace YadaYada.CropperJs
 {
     public partial class Cropper
     {
-        [Inject] private CropperInterop Interop { get; set; } = null!;
+        private ElementReference _image;
+        [Inject] private CropperInterop CropperInterop { get; set; } = null!;
 
         [Inject] private ILogger<Cropper> Logger { get; set; } = null!;
 
         [Parameter]
         public string ImageSource { get; set; } = null!;
 
-        private Task ImageLoaded(ProgressEventArgs arg)
+        private async Task ImageLoaded(ProgressEventArgs arg)
         {
             Logger.LogInformation(nameof(ImageLoaded));
-            return Task.CompletedTask;
+            await CropperInterop.CreatePopperAsync(_image, new Options());
         }
     }
 }
