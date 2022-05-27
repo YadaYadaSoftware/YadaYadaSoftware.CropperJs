@@ -10,5 +10,7 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
 builder.Services.AddSingleton<ExampleJsInterop>();
+builder.Services.AddSingleton<CropperInterop>();
+//builder.Services.AddLogging(loggingBuilder => loggingBuilder.AddProvider(new ));
 
 await builder.Build().RunAsync();
