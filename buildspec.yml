@@ -1,0 +1,10 @@
+version: 0.2
+env:
+  shell: bash
+phases:
+  install:
+    commands:
+      - VERSION="${MAJOR}.$(date +%j).${CODEBUILD_BUILD_NUMBER}"
+  build:
+    commands:
+      - dotnet package --verbosity quiet --configuration $CONFIGURATION
