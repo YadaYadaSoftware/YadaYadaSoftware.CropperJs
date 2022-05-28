@@ -169,7 +169,7 @@ namespace YadaYada.CropperJs
             Logger.LogInformation(nameof(Cropper) + "." + nameof(CropEndHandler));
         }
 
-        public Task ZoomTo(decimal i)
+        public Task Zoom(decimal i)
         {
             this.ZoomLevel = i;
             return _cropperInstance.Zoom(i);
