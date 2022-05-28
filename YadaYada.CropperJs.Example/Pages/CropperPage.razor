@@ -10,6 +10,14 @@
          @bind-Zoom="@this.Model.Zoom" 
          @bind-Rotation="@this.Model.Rotation"/>
 
+<div>
+    <label for="dragModeNone">None</label>
+    <input type="radio" id="dragModeNone" name="dragMode" checked="@(DragMode == DragModeEnum.None)" onchange="@((object o) => DragMode = DragModeEnum.None)">
+    <label for="dragModeCrop">Crop</label>
+    <input type="radio" id="dragModeCrop" name="dragMode" checked="@(DragMode == DragModeEnum.Cropper)" onchange="@((object o) => DragMode = DragModeEnum.Cropper)">
+    <label for="dragModeImage">Image</label>
+    <input type="radio" id="dragModeImage" name="dragMode" checked="@(DragMode == DragModeEnum.Image)" onchange="@((object o) => DragMode = DragModeEnum.Image)">
+</div>
 
 <div>
     <label for="CropX">Crop X:</label>

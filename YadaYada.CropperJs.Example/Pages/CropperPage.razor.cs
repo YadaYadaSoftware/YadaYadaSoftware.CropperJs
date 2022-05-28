@@ -146,6 +146,8 @@ namespace YadaYada.CropperJs.Example.Pages
             }
         }
 
+        public DragModeEnum DragMode { get; set; } = DragModeEnum.Cropper;
+
 
         private Task ZoomTo(decimal ratio)
         {
