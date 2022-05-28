@@ -19,6 +19,7 @@
         preview: '.img-preview',
         ready: function (e) {
             console.log(e.type);
+            objRef.invokeMethodAsync('ready');
         },
         cropstart: function (e) {
             console.log(e.type, e.detail.action);
@@ -318,3 +319,7 @@ export function zoom(instance, scale) {
 export function setDragMode(instance, mode) {
     instance.setDragMode(mode);
 }
+export function setData(instance,data) {
+    instance.setData(data);
+}
+

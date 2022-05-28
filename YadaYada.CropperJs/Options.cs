@@ -23,6 +23,12 @@ public class Options
     [JSInvokable("zoom")]
     public void Zoom(decimal ratio) => OnZoom?.Invoke(ratio);
 
+    [JsonIgnore]
+    public Action OnReady { get; set; } = null!;
+
+    [JSInvokable("ready")]
+    public void Ready() => OnReady.Invoke();
+
 
 }
 
@@ -40,6 +46,13 @@ public class CropEventArgs : EventArgs
     [JsonPropertyName("width")] public decimal Width { get; set; }
     [JsonPropertyName("height")] public decimal Height { get; set; }
     [JsonPropertyName("rotate")] public decimal Rotation { get; set; }
-    
+}
 
+public class CropData
+{
+    [JsonPropertyName("x")] public decimal X { get; set; }
+    [JsonPropertyName("y")] public decimal Y { get; set; }
+    [JsonPropertyName("width")] public decimal Width { get; set; }
+    [JsonPropertyName("height")] public decimal Height { get; set; }
+    [JsonPropertyName("rotate")] public decimal Rotation { get; set; }
 }

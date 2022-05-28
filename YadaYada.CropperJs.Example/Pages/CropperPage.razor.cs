@@ -98,7 +98,7 @@ namespace YadaYada.CropperJs.Example.Pages
         private string _log = string.Empty;
         private decimal _rotation;
         private DragModeEnum _dragMode = DragModeEnum.Cropper;
-        private CropModel Model { get; set; } = new CropModel();
+        private CropModel Model { get; set; } = new CropModel() { X = 10, Y = 10, Width = 10, Height = 10};
 
         protected override Task OnInitializedAsync()
         {

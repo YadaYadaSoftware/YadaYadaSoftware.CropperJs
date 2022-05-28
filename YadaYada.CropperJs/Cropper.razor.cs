@@ -24,6 +24,7 @@ public static class CropperServices
 public partial class Cropper
 {
     private ElementReference _image;
+    private bool _ready;
 
     [Inject] private ILogger<Cropper> Logger { get; set; } = null!;
     [Inject] private CropperFactory CropperFactory { get; set; } = null!;
@@ -53,15 +54,24 @@ public partial class Cropper
     private async Task ImageLoaded(ProgressEventArgs arg)
     {
         Logger.LogInformation(nameof(ImageLoaded));
+        // ReSharper disable once ConditionIsAlwaysTrueOrFalse
         if (_cropperInstance == null)
         {
             var options = new Options();
             options.OnCropEnd = CropEndHandler;
             options.OnCrop = CropHandler;
             options.OnZoom = ZoomHandler;
+            options.OnReady = ReadyHandler;
             _cropperInstance = await CropperFactory.CreateCropperAsync(_image, options);
         }
     }
+
+    private async void ReadyHandler()
+    {
+        _ready = true;
+        await _cropperInstance.SetCropAsync(new CropData { X = this.CropX, Y = this.CropY, Width = this.CropWidth, Height = this.CropHeight, Rotation = this.Rotation });
+    }
+
 
     private void ZoomHandler(decimal ratio)
     {
@@ -167,6 +177,7 @@ public partial class Cropper
 
     private void CropHandler(CropEventArgs crop)
     {
+        if (!_ready) return;
         Logger.LogInformation(crop.X.ToString() + ',' + crop.Y + ',' + crop.Width + ',' + crop.Height + ',' + crop.Rotation);
         this.CropX = (int) crop.X;
         this.CropY = (int) crop.Y;
@@ -184,6 +195,16 @@ public partial class Cropper
     {
         this.ZoomLevel = i;
         return _cropperInstance.Zoom(i);
+    }
+
+    //CropEventArgs
+    /*
+        {"x":127.99999999999996,"y":71.99999999999997,"width":1024.0000000000002,"height":576.0000000000001,"rotate":0,"scaleX":1,"scaleY":1}
+     */
+    public Task SetCrop(decimal x, decimal y, decimal width, decimal height, decimal rotation)
+    {
+        var data = new CropData {X = x, Y = y, Width = width, Height = height, Rotation = rotation};
+        return _cropperInstance.SetCropAsync(data);
     }
 
     [Parameter] public EventCallback<DragModeEnum> DragModeChanged { get; set; }
