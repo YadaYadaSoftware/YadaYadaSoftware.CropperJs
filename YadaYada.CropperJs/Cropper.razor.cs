@@ -137,7 +137,8 @@ namespace YadaYada.CropperJs
 
         #endregion
         private decimal _rotation;
-        
+        private DragModeEnum _dragMode;
+
         [Parameter]
         public decimal Rotation
         {
@@ -172,6 +173,20 @@ namespace YadaYada.CropperJs
         {
             this.Zoom = i;
             return _cropperInstance.Zoom(i);
+        }
+
+        [Parameter] public EventCallback<DragModeEnum> DragModeChanged { get; set; }
+
+        [Parameter]
+        public DragModeEnum DragMode
+        {
+            get => _dragMode;
+            set
+            {
+                if(_dragMode==value) return;
+                _dragMode = value;
+                InvokeAsync(async () => { await _cropperInstance.DragMode(value); });
+            }
         }
     }
 }

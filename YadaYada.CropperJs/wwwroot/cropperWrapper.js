@@ -317,3 +317,6 @@
 export function zoom(instance, scale) {
     instance.zoom(scale, null);
 }
+export function setDragMode(instance, mode) {
+    instance.setDragMode(mode);
+}
