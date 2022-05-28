@@ -5,12 +5,13 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	<PackageReadmeFile>readme.txt</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="wwwroot\main-cropper.css" />
+    <None Include="readme.txt" Pack="true" PackagePath="\"/>
   </ItemGroup>
-
 
   <ItemGroup>
     <SupportedPlatform Include="browser" />
