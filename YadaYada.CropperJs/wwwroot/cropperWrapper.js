@@ -4,8 +4,6 @@
 
     var Cropper = window.Cropper;
     var URL = window.URL || window.webkitURL;
-    var container = document.querySelector('.img-container');
-    //var image = container.getElementsByTagName('img').item(0);
     var image = reference;
     var download = document.getElementById('download');
     var actions = document.getElementById('actions');

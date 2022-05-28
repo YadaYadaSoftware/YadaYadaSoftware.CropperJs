@@ -199,4 +199,9 @@ public partial class Cropper
             InvokeAsync(async () => { await _cropperInstance.DragMode(value); });
         }
     }
+
+    [Parameter]
+    public string Id { get; set; }
+
+    private string ImageId => this.Id + "Image";
 }
