@@ -7,16 +7,16 @@ namespace YadaYada.CropperJs.Example.Pages
 {
     public class CropModel : INotifyPropertyChanged
     {
-        private decimal _x;
-        private decimal _y;
-        private decimal _width;
-        private decimal _height;
+        private int _x;
+        private int _y;
+        private int _width;
+        private int _height;
         private decimal _zoomLevel;
         private decimal _rotation;
 
 
 
-        public decimal X
+        public int X
         {
             get => _x;
             set
@@ -27,7 +27,7 @@ namespace YadaYada.CropperJs.Example.Pages
             }
         }
 
-        public decimal Y
+        public int Y
         {
             get => _y;
             set
@@ -38,7 +38,7 @@ namespace YadaYada.CropperJs.Example.Pages
             }
         }
 
-        public decimal Width
+        public int Width
         {
             get => _width;
             set
@@ -49,7 +49,7 @@ namespace YadaYada.CropperJs.Example.Pages
             }
         }
 
-        public decimal Height
+        public int Height
         {
             get => _height;
             set
@@ -95,7 +95,6 @@ namespace YadaYada.CropperJs.Example.Pages
     {
         private Cropper _cropper = null!;
         private decimal _zoom = 1;
-        private decimal _cropX;
         private string _log = string.Empty;
         private decimal _rotation;
         private DragModeEnum _dragMode = DragModeEnum.Cropper;

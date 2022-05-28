@@ -58,10 +58,10 @@ namespace YadaYada.CropperJs
         }
 
         #region CropX
-        private decimal _cropX;
+        private int _cropX;
 
         [Parameter]
-        public decimal CropX
+        public int CropX
         {
             get => _cropX;
             set
@@ -73,15 +73,15 @@ namespace YadaYada.CropperJs
         }
 
         [Parameter]
-        public EventCallback<decimal> CropXChanged { get; set; }
+        public EventCallback<int> CropXChanged { get; set; }
 
         #endregion
 
         #region CropY
-        private decimal _cropY;
+        private int _cropY;
 
         [Parameter]
-        public decimal CropY
+        public int CropY
         {
             get => _cropY;
             set
@@ -93,15 +93,15 @@ namespace YadaYada.CropperJs
         }
 
         [Parameter]
-        public EventCallback<decimal> CropYChanged { get; set; }
+        public EventCallback<int> CropYChanged { get; set; }
 
         #endregion
 
         #region CropWidth
-        private decimal _cropWidth;
+        private int _cropWidth;
 
         [Parameter]
-        public decimal CropWidth
+        public int CropWidth
         {
             get => _cropWidth;
             set
@@ -113,15 +113,15 @@ namespace YadaYada.CropperJs
         }
 
         [Parameter]
-        public EventCallback<decimal> CropWidthChanged { get; set; }
+        public EventCallback<int> CropWidthChanged { get; set; }
 
         #endregion
 
         #region CropHeight
-        private decimal _cropHeight;
+        private int _cropHeight;
 
         [Parameter]
-        public decimal CropHeight
+        public int CropHeight
         {
             get => _cropHeight;
             set
@@ -133,7 +133,7 @@ namespace YadaYada.CropperJs
         }
 
         [Parameter]
-        public EventCallback<decimal> CropHeightChanged { get; set; }
+        public EventCallback<int> CropHeightChanged { get; set; }
 
         #endregion
         private decimal _rotation;
@@ -157,10 +157,10 @@ namespace YadaYada.CropperJs
         private void CropHandler(CropEventArgs crop)
         {
             Logger.LogInformation(crop.X.ToString() + ',' + crop.Y + ',' + crop.Width + ',' + crop.Height + ',' + crop.Rotation);
-            this.CropX = crop.X;
-            this.CropY = crop.Y;
-            this.CropWidth = crop.Width;
-            this.CropHeight = crop.Height;
+            this.CropX = (int) crop.X;
+            this.CropY = (int) crop.Y;
+            this.CropWidth = (int) crop.Width;
+            this.CropHeight = (int) crop.Height;
             this.Rotation = crop.Rotation;
         }
 
