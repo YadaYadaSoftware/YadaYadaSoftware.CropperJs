@@ -11,7 +11,7 @@ namespace YadaYada.CropperJs.Example.Pages
         private decimal _y;
         private decimal _width;
         private decimal _height;
-        private decimal _zoom;
+        private decimal _zoomLevel;
         private decimal _rotation;
 
 
@@ -60,13 +60,13 @@ namespace YadaYada.CropperJs.Example.Pages
             }
         }
 
-        public decimal Zoom
+        public decimal ZoomLevel
         {
-            get => _zoom;
+            get => _zoomLevel;
             set
             {
-                if (value == _zoom) return;
-                _zoom = value;
+                if (value == _zoomLevel) return;
+                _zoomLevel = value;
                 OnPropertyChanged();
             }
         }

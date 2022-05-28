@@ -21,23 +21,23 @@ namespace YadaYada.CropperJs
         public string ImageSource { get; set; } = null!;
 
         [Parameter]
-        public decimal Zoom
+        public decimal ZoomLevel
         {
-            get => _zoom;
+            get => _zoomLevel;
             set
             {
-                if (_zoom == value) return;
-                _zoom = value;
-                ZoomChanged.InvokeAsync(value);
+                if (_zoomLevel == value) return;
+                _zoomLevel = value;
+                ZoomLevelChanged.InvokeAsync(value);
                 
             }
         }
 
         [Parameter]
-        public EventCallback<decimal> ZoomChanged { get; set; }
+        public EventCallback<decimal> ZoomLevelChanged { get; set; }
 
         private CropperInstance _cropperInstance = null!;
-        private decimal _zoom;
+        private decimal _zoomLevel;
 
         private async Task ImageLoaded(ProgressEventArgs arg)
         {
@@ -54,7 +54,7 @@ namespace YadaYada.CropperJs
 
         private void ZoomHandler(decimal ratio)
         {
-            this.Zoom = ratio;
+            this.ZoomLevel = ratio;
         }
 
         #region CropX
@@ -171,7 +171,7 @@ namespace YadaYada.CropperJs
 
         public Task ZoomTo(decimal i)
         {
-            this.Zoom = i;
+            this.ZoomLevel = i;
             return _cropperInstance.Zoom(i);
         }
 

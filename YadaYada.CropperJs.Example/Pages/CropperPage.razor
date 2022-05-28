@@ -7,7 +7,7 @@
          @bind-CropY="@this.Model.Y" 
          @bind-CropWidth="@this.Model.Width" 
          @bind-CropHeight="@this.Model.Height" 
-         @bind-Zoom="@this.Model.Zoom" 
+         @bind-ZoomLevel="@this.Model.ZoomLevel" 
          @bind-Rotation="@this.Model.Rotation"
          @bind-DragMode="@this.DragMode"
          />
@@ -33,7 +33,7 @@
     <label for="Rotation">Rotation:</label>
     <input id="Rotation" type="text" @bind="@this.Model.Rotation"/>
     <label for="Zoom">Zoom:</label>
-    <input id="Zoom" type="text" @bind="@this.Model.Zoom"/>
+    <input id="Zoom" type="text" @bind="@this.Model.ZoomLevel"/>
 </div>
 <div>
     <button @onclick="()=>ZoomTo(2)">Zoom To 200%</button>
