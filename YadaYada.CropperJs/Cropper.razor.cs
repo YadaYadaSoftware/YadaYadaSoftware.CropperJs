@@ -227,4 +227,5 @@ public partial class Cropper
     private string ImageId => this.Id + "Image";
 
     [Parameter] public bool ShowNativeCropperJsToolbar { get; set; } = false;
+    [Parameter] public RenderFragment ChildContent { get; set; } = null!;
 }
