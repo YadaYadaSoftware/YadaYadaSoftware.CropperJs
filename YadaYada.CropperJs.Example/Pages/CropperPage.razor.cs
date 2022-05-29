@@ -161,5 +161,10 @@ namespace YadaYada.CropperJs.Example.Pages
         {
             return _cropper.ZoomTo(ratio);
         }
+
+        private Task Rotate(int degrees)
+        {
+            return _cropper.Rotate(degrees);
+        }
     }
 }
