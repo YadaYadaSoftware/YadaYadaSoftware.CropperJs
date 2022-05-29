@@ -157,7 +157,7 @@ namespace YadaYada.CropperJs.Example.Pages
         }
 
 
-        private ValueTask ZoomTo(decimal ratio)
+        private Task ZoomTo(decimal ratio)
         {
             return _cropper.ZoomTo(ratio);
         }

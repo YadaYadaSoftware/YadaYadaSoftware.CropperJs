@@ -196,7 +196,7 @@ public partial class Cropper
         return _cropperInstance.Zoom(i);
     }
 
-    public ValueTask ZoomTo(decimal zoomLevel)
+    public Task ZoomTo(decimal zoomLevel)
     {
         return _cropperInstance.ZoomTo(zoomLevel);
     }

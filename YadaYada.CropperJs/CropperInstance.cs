@@ -58,9 +58,9 @@ public class CropperInstance : IAsyncDisposable
         await _cropperWrapper.InvokeVoidAsync("setData", _cropperJsInstance, data);
     }
 
-    public ValueTask ZoomTo(decimal zoomLevel)
+    public async Task ZoomTo(decimal zoomLevel)
     {
-        return _cropperWrapper.InvokeVoidAsync("zoomTo", _cropperJsInstance, zoomLevel);
+        await _cropperWrapper.InvokeVoidAsync("zoomTo", _cropperJsInstance, zoomLevel);
     }
 }
 
