@@ -62,6 +62,14 @@ public class CropperInstance : IAsyncDisposable
     {
         await _cropperWrapper.InvokeVoidAsync("zoomTo", _cropperJsInstance, zoomLevel);
     }
+    public async Task RotateTo(decimal degrees)
+    {
+        await _cropperWrapper.InvokeVoidAsync("rotateTo", _cropperJsInstance, degrees);
+    }
+    public async Task Rotate(decimal degrees)
+    {
+        await _cropperWrapper.InvokeVoidAsync("rotate", _cropperJsInstance, degrees);
+    }
 }
 
 public enum DragModeEnum

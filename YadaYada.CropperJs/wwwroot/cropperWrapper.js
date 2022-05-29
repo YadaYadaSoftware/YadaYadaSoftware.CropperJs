@@ -334,6 +334,14 @@ export function zoomTo(instance, scale) {
     instance.zoomTo(scale, null);
 }
 
+export function rotate(instance, degrees) {
+    instance.rotate(scale, null);
+}
+
+export function rotateTo(instance, degrees) {
+    instance.rotateTo(scale, null);
+}
+
 export function setDragMode(instance, mode) {
     instance.setDragMode(mode);
 }

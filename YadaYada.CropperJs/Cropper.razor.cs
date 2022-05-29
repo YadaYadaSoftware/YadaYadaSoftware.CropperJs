@@ -200,6 +200,14 @@ public partial class Cropper
     {
         return _cropperInstance.ZoomTo(zoomLevel);
     }
+    public Task RotateTo(decimal degrees)
+    {
+        return _cropperInstance.RotateTo(degrees);
+    }
+    public Task Rotate(decimal degrees)
+    {
+        return _cropperInstance.Rotate(degrees);
+    }
 
     //CropEventArgs
     /*
