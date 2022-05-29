@@ -57,6 +57,11 @@ public class CropperInstance : IAsyncDisposable
     {
         await _cropperWrapper.InvokeVoidAsync("setData", _cropperJsInstance, data);
     }
+
+    public ValueTask ZoomTo(decimal zoomLevel)
+    {
+        return _cropperWrapper.InvokeVoidAsync("zoomTo", _cropperJsInstance, zoomLevel);
+    }
 }
 
 public enum DragModeEnum
