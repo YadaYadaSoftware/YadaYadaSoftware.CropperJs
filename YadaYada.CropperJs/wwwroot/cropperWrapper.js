@@ -1,4 +1,4 @@
-﻿export function createCropper(reference, outsideOptions, objRef) {
+﻿export function createCropper(reference, objRef) {
 
     'use strict';
 
