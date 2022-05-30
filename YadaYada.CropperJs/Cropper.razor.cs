@@ -21,10 +21,12 @@ public static class CropperServices
     }
 }
 
-public partial class Cropper
+public partial class Cropper : IDisposable
 {
     private ElementReference _image;
     private bool _ready;
+    private CropperInstance _cropperInstance = null!;
+    private decimal _zoomLevel;
 
     [Inject] private ILogger<Cropper> Logger { get; set; } = null!;
     [Inject] private CropperFactory CropperFactory { get; set; } = null!;
@@ -48,8 +50,6 @@ public partial class Cropper
     [Parameter]
     public EventCallback<decimal> ZoomLevelChanged { get; set; }
 
-    private CropperInstance _cropperInstance = null!;
-    private decimal _zoomLevel;
 
     private async Task ImageLoaded(ProgressEventArgs arg)
     {
@@ -240,4 +240,9 @@ public partial class Cropper
 
     [Parameter] public bool ShowNativeCropperJsToolbar { get; set; } = false;
     [Parameter] public RenderFragment ChildContent { get; set; } = null!;
+
+    public void Dispose()
+    {
+        _cropperInstance?.Dispose();
+    }
 }

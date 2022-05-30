@@ -2,7 +2,7 @@
 
 namespace YadaYada.CropperJs;
 
-public class CropperInstance : IAsyncDisposable
+public class CropperInstance : IDisposable
 {
     private readonly IJSObjectReference _cropperJsInstance;
     private readonly DotNetObjectReference<Options> _objRef;
@@ -47,10 +47,10 @@ public class CropperInstance : IAsyncDisposable
     }
 
 
-    public async ValueTask DisposeAsync()
+    public void Dispose()
     {
         _objRef?.Dispose();
-        if (_cropperWrapper != null) await _cropperWrapper.DisposeAsync();
+        _cropperWrapper?.Dispose();
     }
 
     public async Task SetCropAsync(CropData data)
