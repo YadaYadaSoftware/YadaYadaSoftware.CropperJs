@@ -62,7 +62,22 @@ public partial class Cropper : IDisposable
             options.OnCrop = CropHandler;
             options.OnZoom = ZoomHandler;
             options.OnReady = ReadyHandler;
-            options.DragMode = this.DragMode;
+            switch (this.DragMode)
+            {
+                case DragModeEnum.Image:
+                    options.DragMode = "move";
+                    break;
+                case DragModeEnum.Cropper:
+                    options.DragMode = "crop";
+                    break;
+                case DragModeEnum.None:
+                    options.DragMode = "none";
+                    break;
+                default:
+                    throw new NotSupportedException(this.DragMode.ToString());
+
+            }
+            options.Data = new CropData {X = this.CropX, Y = this.CropY, Width = this.CropWidth, Height = this.CropHeight, Rotation = this.Rotation};
             _cropperInstance = await CropperFactory.CreateCropperAsync(_image, options);
         }
     }
@@ -70,7 +85,7 @@ public partial class Cropper : IDisposable
     private async void ReadyHandler()
     {
         _ready = true;
-        await _cropperInstance.SetCropAsync(new CropData { X = this.CropX, Y = this.CropY, Width = this.CropWidth, Height = this.CropHeight, Rotation = this.Rotation });
+//        await _cropperInstance.SetCropAsync(new CropData { X = this.CropX, Y = this.CropY, Width = this.CropWidth, Height = this.CropHeight, Rotation = this.Rotation });
     }
 
 

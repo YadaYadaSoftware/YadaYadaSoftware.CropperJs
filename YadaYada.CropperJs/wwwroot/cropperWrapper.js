@@ -17,6 +17,7 @@
     var options = {
         aspectRatio: NaN,
         dragMode: externalOptions.dragMode,
+        data: externalOptions.data,
         preview: '.img-preview',
         ready: function (e) {
             console.log(e.type);
