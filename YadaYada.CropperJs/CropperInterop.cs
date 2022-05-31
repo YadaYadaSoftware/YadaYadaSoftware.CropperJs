@@ -25,7 +25,7 @@ public class CropperFactory
             DotNetObjectReference<Options> objRef = DotNetObjectReference.Create(options);
             
             var cropperWrapper = await jSRuntime.InvokeAsync<IJSInProcessObjectReference>("import", "./_content/YadaYada.CropperJs/cropperWrapper.js");
-            var jSInstance = await cropperWrapper.InvokeAsync<IJSObjectReference>("createCropper", imageReference, objRef);
+            var jSInstance = await cropperWrapper.InvokeAsync<IJSObjectReference>("createCropper", imageReference, objRef, options);
             var cropperInstance = new CropperInstance(jSInstance, objRef, cropperWrapper);
             _logger.LogInformation("Created:{0}", cropperInstance.GetHashCode());
             return cropperInstance;

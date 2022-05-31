@@ -1,4 +1,4 @@
-﻿export function createCropper(reference, objRef) {
+﻿export function createCropper(reference, objRef, externalOptions) {
 
     'use strict';
 
@@ -16,6 +16,7 @@
     var dataScaleY = document.getElementById('dataScaleY');
     var options = {
         aspectRatio: NaN,
+        dragMode: externalOptions.dragMode,
         preview: '.img-preview',
         ready: function (e) {
             console.log(e.type);

@@ -62,6 +62,7 @@ public partial class Cropper : IDisposable
             options.OnCrop = CropHandler;
             options.OnZoom = ZoomHandler;
             options.OnReady = ReadyHandler;
+            options.DragMode = this.DragMode;
             _cropperInstance = await CropperFactory.CreateCropperAsync(_image, options);
         }
     }

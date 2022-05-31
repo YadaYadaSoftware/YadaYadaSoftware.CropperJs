@@ -97,7 +97,7 @@ namespace YadaYada.CropperJs.Example.Pages
         private decimal _zoom = 1;
         private string _log = string.Empty;
         private decimal _rotation;
-        private DragModeEnum _dragMode = DragModeEnum.Cropper;
+        private DragModeEnum _dragMode = DragModeEnum.Image;
         private CropModel Model { get; set; } = new CropModel() { X = 10, Y = 10, Width = 10, Height = 10};
 
         protected override Task OnInitializedAsync()
@@ -151,7 +151,7 @@ namespace YadaYada.CropperJs.Example.Pages
             get => _dragMode;
             set
             {
-                if(_dragMode==value) return;
+                if (_dragMode == value) return;
                 _dragMode = value;
             }
         }

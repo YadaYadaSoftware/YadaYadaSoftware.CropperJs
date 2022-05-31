@@ -1,8 +1,38 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 using Microsoft.JSInterop;
 
 namespace YadaYada.CropperJs;
 
+public class OptionsConverter : System.Text.Json.Serialization.JsonConverter<Options>
+{
+    public override Options? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void Write(Utf8JsonWriter writer, Options value, JsonSerializerOptions options)
+    {
+        writer.WriteStartObject();
+        switch (value.DragMode)
+        {
+            case DragModeEnum.Image:
+                writer.WriteString("dragMode", "move");
+                break;
+            case DragModeEnum.Cropper:
+                writer.WriteString("dragMode", "crop");
+                break;
+            case DragModeEnum.None:
+                writer.WriteString("dragMode", "none");
+                break;
+            default:
+                throw new NotSupportedException(value.DragMode.ToString());
+        }
+        writer.WriteEndObject();
+    }
+}
+
+[JsonConverter(typeof(OptionsConverter))]
 public class Options
 {
     [JsonIgnore]
@@ -25,6 +55,8 @@ public class Options
 
     [JsonIgnore]
     public Action OnReady { get; set; } = null!;
+
+    [JsonPropertyName("dragMode")] public DragModeEnum DragMode { get; set; } = DragModeEnum.Cropper;
 
     [JSInvokable("ready")]
     public void Ready() => OnReady.Invoke();
