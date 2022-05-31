@@ -85,7 +85,7 @@ public partial class Cropper : IDisposable
     private async void ReadyHandler()
     {
         _ready = true;
-//        await _cropperInstance.SetCropAsync(new CropData { X = this.CropX, Y = this.CropY, Width = this.CropWidth, Height = this.CropHeight, Rotation = this.Rotation });
+        Console.WriteLine(nameof(ReadyHandler));
     }
 
 
