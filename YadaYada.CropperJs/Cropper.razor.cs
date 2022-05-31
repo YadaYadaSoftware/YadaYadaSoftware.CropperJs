@@ -35,6 +35,13 @@ public partial class Cropper : IDisposable
     public string ImageSource { get; set; } = null!;
 
     [Parameter]
+    public bool ShowTextBoxes { get; set; } = false;
+
+    [Parameter]
+    public EventCallback<bool> ShowTextBoxesChanged { get; set; }
+
+
+    [Parameter]
     public decimal ZoomLevel
     {
         get => _zoomLevel;

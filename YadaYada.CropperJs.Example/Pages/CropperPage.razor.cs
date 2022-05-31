@@ -156,6 +156,8 @@ namespace YadaYada.CropperJs.Example.Pages
             }
         }
 
+        public bool ShowTextBoxes { get; set; } = false;
+
 
         private Task ZoomTo(decimal ratio)
         {
