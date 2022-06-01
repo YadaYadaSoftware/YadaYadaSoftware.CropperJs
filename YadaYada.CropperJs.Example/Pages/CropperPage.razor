@@ -12,9 +12,18 @@
          @bind-Rotation="@this.Model.Rotation"
          @bind-DragMode="@this.DragMode"
          @bind-ShowTextBoxes="@this.ShowTextBoxes"
+         @bind-ShowNativeCropperJsToolbar="@this.ShowNativeCropperJsToolbar"
          id="exampleCropper">
     
     <div>This is my child content</div>
+    <div>
+        <label for="showNativeCropperJsToolbar" >Show Native cropper.js toolbar</label>
+        <input id="showNativeCropperJsToolbar" type="checkbox" @bind="@this.ShowNativeCropperJsToolbar"/>
+    </div>
+    <div>
+        <label for="showTextBoxes" >Show TextBoxes</label>
+        <input id="showTextBoxes" type="checkbox" @bind="@this.ShowTextBoxes"/>
+    </div>
 
 </Cropper>
 

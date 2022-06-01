@@ -35,7 +35,17 @@ public partial class Cropper : IDisposable
     public string ImageSource { get; set; } = null!;
 
     [Parameter]
-    public bool ShowTextBoxes { get; set; } = false;
+    public bool ShowTextBoxes
+    {
+        get => _showTextBoxes;
+        set
+        {
+            if (_showTextBoxes == value) return;
+            _showTextBoxes = value;
+            this.StateHasChanged();
+            ShowTextBoxesChanged.InvokeAsync(value);
+        }
+    }
 
     [Parameter]
     public EventCallback<bool> ShowTextBoxesChanged { get; set; }
@@ -182,6 +192,8 @@ public partial class Cropper : IDisposable
     #endregion
     private decimal _rotation;
     private DragModeEnum _dragMode;
+    private bool _showNativeCropperJsToolbar = false;
+    private bool _showTextBoxes = false;
 
     [Parameter]
     public decimal Rotation
@@ -261,7 +273,22 @@ public partial class Cropper : IDisposable
 
     private string ImageId => this.Id + "Image";
 
-    [Parameter] public bool ShowNativeCropperJsToolbar { get; set; } = false;
+    [Parameter] public EventCallback<bool> ShowNativeCropperJsToolbarChanged { get; set; }
+
+    [Parameter]
+    public bool ShowNativeCropperJsToolbar
+    {
+        get => _showNativeCropperJsToolbar;
+        set
+        {
+            if(_showNativeCropperJsToolbar==value) return;
+            _showNativeCropperJsToolbar = value;
+            this.StateHasChanged();
+            ShowNativeCropperJsToolbarChanged.InvokeAsync(value);
+
+        }
+    }
+
     [Parameter] public RenderFragment ChildContent { get; set; } = null!;
 
     public void Dispose()

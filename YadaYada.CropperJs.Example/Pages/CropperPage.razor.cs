@@ -98,6 +98,8 @@ namespace YadaYada.CropperJs.Example.Pages
         private string _log = string.Empty;
         private decimal _rotation;
         private DragModeEnum _dragMode = DragModeEnum.Image;
+        private bool _showTextBoxes = true;
+        private bool _showNativeCropperJsToolbar = true;
         private CropModel Model { get; set; } = new CropModel() { X = 100, Y = 101, Width = 102, Height = 103};
 
         protected override Task OnInitializedAsync()
@@ -156,7 +158,29 @@ namespace YadaYada.CropperJs.Example.Pages
             }
         }
 
-        public bool ShowTextBoxes { get; set; } = false;
+
+        public bool ShowTextBoxes
+        {
+            get => _showTextBoxes;
+            set
+            {
+                if (_showTextBoxes==value) return;
+                _showTextBoxes = value;
+                this.StateHasChanged();
+            }
+        }
+
+
+        public bool ShowNativeCropperJsToolbar
+        {
+            get => _showNativeCropperJsToolbar;
+            set
+            {
+                if (_showNativeCropperJsToolbar ==value) return;
+                _showNativeCropperJsToolbar = value;
+                this.StateHasChanged();
+            }
+        }
 
 
         private Task ZoomTo(decimal ratio)
