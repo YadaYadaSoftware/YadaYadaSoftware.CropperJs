@@ -29,11 +29,11 @@
         cropmove: function (e) {
             console.log(e.type, e.detail.action);
         },
-        cropend: function (e) {
-            console.log(e.type, e.detail.action);
-            var cropData = cropper.getData();
-            objRef.invokeMethodAsync('cropend', cropData);
-        },
+        //cropend: function (e) {
+        //    console.log(e.type, e.detail.action);
+        //    var cropData = cropper.getData();
+        //    objRef.invokeMethodAsync('cropend', cropData);
+        //},
         crop: function (e) {
             var data = e.detail;
             console.log(e.type);
