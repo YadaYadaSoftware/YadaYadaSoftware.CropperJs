@@ -173,7 +173,7 @@ public partial class Cropper : IDisposable
 
     #endregion
     private decimal _rotation;
-    private DragModeEnum _dragMode;
+    private DragModeEnum _dragMode = DragModeEnum.Cropper;
     private bool _showNativeCropperJsToolbar = false;
     private bool _showTextBoxes = false;
     private bool _showStatusBar;
