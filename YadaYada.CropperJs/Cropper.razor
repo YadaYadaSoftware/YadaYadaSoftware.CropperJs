@@ -65,11 +65,20 @@
                 if (this.ShowStatusBar)
                 {
                     <div>
-                        <label>X:</label><label>@this.CropX</label>
-                        <label>Y:</label><label>@this.CropY</label>
-                        <label>H:</label><label>@this.CropHeight</label>
-                        <label>W:</label><label>@this.CropWidth</label>
-                        <label>Scale:</label><label>@this.ZoomLevel</label>
+                        @{
+                            if (this.ShowCropInfo)
+                            {
+                                <label>X:</label><label>@this.CropX</label>
+                                <label>Y:</label><label>@this.CropY</label>
+                                <label>H:</label><label>@this.CropHeight</label>
+                                <label>W:</label><label>@this.CropWidth</label>
+                            }
+                            if (this.ShowZoomLevel)
+                            {
+                                <label>Scaling:</label><label>@this.ZoomLevel</label>
+                            }
+
+                        }
                     </div>
 
                 }

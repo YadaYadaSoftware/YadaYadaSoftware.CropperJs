@@ -179,8 +179,9 @@ public partial class Cropper : IDisposable
     private DragModeEnum _dragMode = DragModeEnum.Cropper;
     private bool _showNativeCropperJsToolbar = false;
     private bool _showTextBoxes = false;
-    private bool _showStatusBar;
+    private bool _showCropInfo;
     private bool _cropEnabled = true;
+    private bool _showZoomLevel;
 
     [Parameter]
     public decimal Rotation
@@ -273,14 +274,31 @@ public partial class Cropper : IDisposable
 
     [Parameter] public RenderFragment ChildContent { get; set; } = null!;
 
+    private bool ShowStatusBar => this.ShowCropInfo || this.ShowZoomLevel;
+
     [Parameter]
-    public bool ShowStatusBar
+    public bool ShowZoomLevel
     {
-        get => _showStatusBar;
+        get => _showZoomLevel;
         set
         {
-            if (_showStatusBar==value) return;
-            _showStatusBar = value;
+            if (_showZoomLevel==value) return;
+            _showZoomLevel = value;
+            ShowZoomLevelChanged.InvokeAsync(value);
+        }
+    }
+
+    [Parameter]
+    public EventCallback<bool> ShowZoomLevelChanged { get; set; }
+
+    [Parameter]
+    public bool ShowCropInfo
+    {
+        get => _showCropInfo;
+        set
+        {
+            if (_showCropInfo==value) return;
+            _showCropInfo = value;
             ShowStatusBarChanged.InvokeAsync(value);
         }
     }
