@@ -37,13 +37,13 @@
         crop: function (e) {
             var data = e.detail;
             console.log(e.type);
-            dataX.value = Math.round(data.x);
-            dataY.value = Math.round(data.y);
-            dataHeight.value = Math.round(data.height);
-            dataWidth.value = Math.round(data.width);
-            dataRotate.value = typeof data.rotate !== 'undefined' ? data.rotate : '';
-            dataScaleX.value = typeof data.scaleX !== 'undefined' ? data.scaleX : '';
-            dataScaleY.value = typeof data.scaleY !== 'undefined' ? data.scaleY : '';
+            if (dataX) dataX.value = Math.round(data.x);
+            if (dataY) dataY.value = Math.round(data.y);
+            if (dataHeight) dataHeight.value = Math.round(data.height);
+            if (dataWidth) dataWidth.value = Math.round(data.width);
+            if (dataRotate) dataRotate.value = typeof data.rotate !== 'undefined' ? data.rotate : '';
+            if (dataScaleX) dataScaleX.value = typeof data.scaleX !== 'undefined' ? data.scaleX : '';
+            if (dataScaleY) dataScaleY.value = typeof data.scaleY !== 'undefined' ? data.scaleY : '';
             objRef.invokeMethodAsync('crop', data );
         },
         zoom: function (e) {
