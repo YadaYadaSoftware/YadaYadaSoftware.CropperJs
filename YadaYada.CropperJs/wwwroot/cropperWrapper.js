@@ -52,6 +52,11 @@
         }
     };
 
+
+    if (!externalOptions.cropEnabled) {
+        options.autoCrop = false;
+        //options.dragMode = 'none';
+    }
     var cropper = new Cropper(image, options);
     var originalImageURL = image.src;
     var uploadedImageType = 'image/jpeg';

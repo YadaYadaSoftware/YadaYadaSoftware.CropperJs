@@ -11,7 +11,7 @@
     "YadaYada.CropperJs.Example": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "cropper",
+      "launchUrl": "compare",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

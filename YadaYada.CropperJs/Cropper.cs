@@ -77,6 +77,7 @@ public partial class Cropper : IDisposable
 
             }
             options.Data = new CropData {X = this.CropX, Y = this.CropY, Width = this.CropWidth, Height = this.CropHeight, Rotation = this.Rotation};
+            options.CropEnabled = this.CropEnabled;
             _cropperInstance = await CropperFactory.CreateCropperAsync(_image, options);
         }
     }
@@ -177,6 +178,7 @@ public partial class Cropper : IDisposable
     private bool _showNativeCropperJsToolbar = false;
     private bool _showTextBoxes = false;
     private bool _showStatusBar;
+    private bool _cropEnabled = true;
 
     [Parameter]
     public decimal Rotation
@@ -286,5 +288,12 @@ public partial class Cropper : IDisposable
     public void Dispose()
     {
         _cropperInstance?.Dispose();
+    }
+
+    [Parameter]
+    public bool CropEnabled
+    {
+        get => _cropEnabled;
+        set => _cropEnabled = value;
     }
 }

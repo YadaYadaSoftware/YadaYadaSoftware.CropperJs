@@ -23,6 +23,7 @@ public class Options
 
     [JsonPropertyName("dragMode")] public string DragMode { get; set; } = "crop";
     [JsonPropertyName("data")] public CropData Data { get; set; }
+    [JsonPropertyName("cropEnabled")] public bool CropEnabled { get; set; }
 
     [JSInvokable("ready")]
     public void Ready() => OnReady.Invoke();
