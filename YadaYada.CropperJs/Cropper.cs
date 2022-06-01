@@ -84,7 +84,7 @@ public partial class Cropper : IDisposable
     private async void ReadyHandler()
     {
         _ready = true;
-        Console.WriteLine(nameof(ReadyHandler));
+        await _cropperInstance.ZoomTo(this.ZoomLevel);
     }
 
 
