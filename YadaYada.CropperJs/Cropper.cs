@@ -1,25 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 
 namespace YadaYada.CropperJs;
-
-public static class CropperServices
-{
-    public static IServiceCollection AddCropperServices(this IServiceCollection services)
-    {
-        services.TryAddSingleton<CropperFactory>();
-        return services;
-    }
-}
 
 public partial class Cropper : IDisposable
 {
@@ -75,7 +58,6 @@ public partial class Cropper : IDisposable
         if (_cropperInstance == null)
         {
             var options = new Options();
-            options.OnCropEnd = CropEndHandler;
             options.OnCrop = CropHandler;
             options.OnZoom = ZoomHandler;
             options.OnReady = ReadyHandler;
@@ -220,11 +202,6 @@ public partial class Cropper : IDisposable
         this.CropWidth = (int) crop.Width;
         this.CropHeight = (int) crop.Height;
         this.Rotation = crop.Rotation;
-    }
-
-    private void CropEndHandler(CropEnd obj)
-    {
-        Logger.LogInformation(nameof(Cropper) + "." + nameof(CropEndHandler));
     }
 
     public Task Zoom(decimal i)

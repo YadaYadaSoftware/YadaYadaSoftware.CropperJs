@@ -71,10 +71,3 @@ public class CropperInstance : IDisposable
         await _cropperWrapper.InvokeVoidAsync("rotate", _cropperJsInstance, degrees);
     }
 }
-
-public enum DragModeEnum
-{
-    None = 1,
-    Cropper,
-    Image,
-}
