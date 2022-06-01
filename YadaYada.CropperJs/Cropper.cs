@@ -57,10 +57,14 @@ public partial class Cropper : IDisposable
         // ReSharper disable once ConditionIsAlwaysTrueOrFalse
         if (_cropperInstance == null)
         {
-            var options = new Options();
-            options.OnCrop = CropHandler;
-            options.OnZoom = ZoomHandler;
-            options.OnReady = ReadyHandler;
+            var options = new Options
+            {
+                OnCrop = CropHandler,
+                OnZoom = ZoomHandler,
+                OnReady = ReadyHandler,
+                Data = new CropData { X = this.CropX, Y = this.CropY, Width = this.CropWidth, Height = this.CropHeight, Rotation = this.Rotation },
+                CropEnabled = this.CropEnabled
+            };
             switch (this.DragMode)
             {
                 case DragModeEnum.Image:
@@ -76,8 +80,6 @@ public partial class Cropper : IDisposable
                     throw new NotSupportedException(this.DragMode.ToString());
 
             }
-            options.Data = new CropData {X = this.CropX, Y = this.CropY, Width = this.CropWidth, Height = this.CropHeight, Rotation = this.Rotation};
-            options.CropEnabled = this.CropEnabled;
             _cropperInstance = await CropperFactory.CreateCropperAsync(_image, options);
         }
     }
