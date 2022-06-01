@@ -9,7 +9,7 @@ public partial class Cropper : IDisposable
     private ElementReference _image;
     private bool _ready;
     private CropperInstance _cropperInstance = null!;
-    private decimal _zoomLevel;
+    private decimal? _zoomLevel = null;
 
     [Inject] private ILogger<Cropper> Logger { get; set; } = null!;
     [Inject] private CropperFactory CropperFactory { get; set; } = null!;
@@ -37,7 +37,7 @@ public partial class Cropper : IDisposable
     [Parameter]
     public decimal ZoomLevel
     {
-        get => _zoomLevel;
+        get => _zoomLevel ?? 1;
         set
         {
             if (_zoomLevel == value) return;
@@ -84,7 +84,7 @@ public partial class Cropper : IDisposable
     private async void ReadyHandler()
     {
         _ready = true;
-        await _cropperInstance.ZoomTo(this.ZoomLevel);
+        if (_zoomLevel.HasValue) await _cropperInstance.ZoomTo(_zoomLevel.Value);
     }
 
 
