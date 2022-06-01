@@ -11,7 +11,7 @@ namespace YadaYada.CropperJs.Example.Pages
         private int _y;
         private int _width;
         private int _height;
-        private decimal _zoomLevel;
+        private decimal _zoomLevel = 10;
         private decimal _rotation;
 
 
@@ -181,6 +181,8 @@ namespace YadaYada.CropperJs.Example.Pages
                 this.StateHasChanged();
             }
         }
+
+        public bool ShowStatusBar { get; set; }
 
 
         private Task ZoomTo(decimal ratio)

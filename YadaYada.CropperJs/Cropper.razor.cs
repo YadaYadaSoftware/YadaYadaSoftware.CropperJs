@@ -194,6 +194,7 @@ public partial class Cropper : IDisposable
     private DragModeEnum _dragMode;
     private bool _showNativeCropperJsToolbar = false;
     private bool _showTextBoxes = false;
+    private bool _showStatusBar;
 
     [Parameter]
     public decimal Rotation
@@ -290,6 +291,20 @@ public partial class Cropper : IDisposable
     }
 
     [Parameter] public RenderFragment ChildContent { get; set; } = null!;
+
+    [Parameter]
+    public bool ShowStatusBar
+    {
+        get => _showStatusBar;
+        set
+        {
+            if (_showStatusBar==value) return;
+            _showStatusBar = value;
+            ShowStatusBarChanged.InvokeAsync(value);
+        }
+    }
+
+    [Parameter] public EventCallback<bool> ShowStatusBarChanged { get; set; }
 
     public void Dispose()
     {

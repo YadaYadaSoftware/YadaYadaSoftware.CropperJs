@@ -61,6 +61,19 @@
             <div class="img-container">
                 <img src="@this.ImageSource" alt="Picture" @ref="_image" @onload="@this.ImageLoaded" id="@this.ImageId">
             </div>
+            @{
+                if (this.ShowStatusBar)
+                {
+                    <div>
+                        <label>X:</label><label>@this.CropX</label>
+                        <label>Y:</label><label>@this.CropY</label>
+                        <label>H:</label><label>@this.CropHeight</label>
+                        <label>W:</label><label>@this.CropWidth</label>
+                        <label>Scale:</label><label>@this.ZoomLevel</label>
+                    </div>
+
+                }
+            }
         </div>
     </div>
     <div class="col-md-3">

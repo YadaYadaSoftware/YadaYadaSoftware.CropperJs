@@ -13,49 +13,51 @@
          @bind-DragMode="@this.DragMode"
          @bind-ShowTextBoxes="@this.ShowTextBoxes"
          @bind-ShowNativeCropperJsToolbar="@this.ShowNativeCropperJsToolbar"
+         @bind-ShowStatusBar="@this.ShowStatusBar"
          id="exampleCropper">
     
-    <div>This is my child content</div>
     <div>
-        <label for="showNativeCropperJsToolbar" >Show Native cropper.js toolbar</label>
+        <input type="checkbox" id="showStatusBar" @bind="@this.ShowStatusBar"/>
+        <label for="showStatusBar">Status Bar</label>
+        <span>|</span>
         <input id="showNativeCropperJsToolbar" type="checkbox" @bind="@this.ShowNativeCropperJsToolbar"/>
-    </div>
-    <div>
-        <label for="showTextBoxes" >Show TextBoxes</label>
+        <label for="showNativeCropperJsToolbar" >Show cropper.js toolbar</label>
+        <span>|</span>
         <input id="showTextBoxes" type="checkbox" @bind="@this.ShowTextBoxes"/>
+        <label for="showTextBoxes" >Show TextBoxes</label>
     </div>
 
+    <div>
+        <label for="dragModeNone">None</label>
+        <input type="radio" id="dragModeNone" name="dragMode" checked="@(DragMode == DragModeEnum.None)" onchange="@((object o) => DragMode = DragModeEnum.None)">
+        <label for="dragModeCrop">Crop</label>
+        <input type="radio" id="dragModeCrop" name="dragMode" checked="@(DragMode == DragModeEnum.Cropper)" onchange="@((object o) => DragMode = DragModeEnum.Cropper)">
+        <label for="dragModeImage">Image</label>
+        <input type="radio" id="dragModeImage" name="dragMode" checked="@(DragMode == DragModeEnum.Image)" onchange="@((object o) => DragMode = DragModeEnum.Image)">
+    </div>
+
+    <div>
+        <label for="CropX">Crop X:</label>
+        <input id="CropX" type="text" @bind="@this.Model.X"/>
+        <label for="CropY">Crop Y:</label>
+        <input id="CropY" type="text" @bind="@this.Model.Y"/>
+        <label for="CropWidth">Crop Width:</label>
+        <input id="CropWidth" tWidthpe="text" @bind="@this.Model.Width"/>
+        <label for="CropHeight">Crop Height:</label>
+        <input id="CropHeight" tHeightpe="text" @bind="@this.Model.Height"/>
+        <label for="Rotation">Rotation:</label>
+        <input id="Rotation" type="text" @bind="@this.Model.Rotation"/>
+        <label for="Zoom">Zoom:</label>
+        <input id="Zoom" type="text" @bind="@this.Model.ZoomLevel"/>
+    </div>
+    <div>
+        <button @onclick="()=>ZoomTo(2)">Zoom To 200%</button>
+        <button @onclick="()=>ZoomTo(3)">Zoom To 300%</button>
+        <button @onclick="()=>Rotate(360/12)">Rotate</button>
+        <button @onclick="()=>RotateTo(90)">Rotate To 3pm (90d)</button>
+    </div>
+    <div>
+        <textarea @bind="@Log" style="height: 200px; width: 100%"/>
+    </div>
 </Cropper>
 
-<div>
-    <label for="dragModeNone">None</label>
-    <input type="radio" id="dragModeNone" name="dragMode" checked="@(DragMode == DragModeEnum.None)" onchange="@((object o) => DragMode = DragModeEnum.None)">
-    <label for="dragModeCrop">Crop</label>
-    <input type="radio" id="dragModeCrop" name="dragMode" checked="@(DragMode == DragModeEnum.Cropper)" onchange="@((object o) => DragMode = DragModeEnum.Cropper)">
-    <label for="dragModeImage">Image</label>
-    <input type="radio" id="dragModeImage" name="dragMode" checked="@(DragMode == DragModeEnum.Image)" onchange="@((object o) => DragMode = DragModeEnum.Image)">
-</div>
-
-<div>
-    <label for="CropX">Crop X:</label>
-    <input id="CropX" type="text" @bind="@this.Model.X"/>
-    <label for="CropY">Crop Y:</label>
-    <input id="CropY" type="text" @bind="@this.Model.Y"/>
-    <label for="CropWidth">Crop Width:</label>
-    <input id="CropWidth" tWidthpe="text" @bind="@this.Model.Width"/>
-    <label for="CropHeight">Crop Height:</label>
-    <input id="CropHeight" tHeightpe="text" @bind="@this.Model.Height"/>
-    <label for="Rotation">Rotation:</label>
-    <input id="Rotation" type="text" @bind="@this.Model.Rotation"/>
-    <label for="Zoom">Zoom:</label>
-    <input id="Zoom" type="text" @bind="@this.Model.ZoomLevel"/>
-</div>
-<div>
-    <button @onclick="()=>ZoomTo(2)">Zoom To 200%</button>
-    <button @onclick="()=>ZoomTo(3)">Zoom To 300%</button>
-    <button @onclick="()=>Rotate(360/12)">Rotate</button>
-    <button @onclick="()=>RotateTo(90)">Rotate To 3pm (90d)</button>
-</div>
-<div>
-    <textarea @bind="@Log" style="height: 200px; width: 100%"/>
-</div>
