@@ -12,5 +12,5 @@ phases:
       - dotnet build 
   post_build:
     commands:
-      #- dotnet nuget push YadaYada.CropperJs/bin/Debug/*.nupkg --api-key $NUGET_API_KEY  --source https://api.nuget.org/v3/index.json
+      - dotnet nuget push YadaYada.CropperJs/bin/Debug/*.nupkg --api-key $NUGET_API_KEY  --source https://api.nuget.org/v3/index.json
       - dotnet nuget push YadaYada.CropperJs/bin/Debug/*.nupkg --source $YADAYADA_REPO
