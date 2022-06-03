@@ -1,6 +1,6 @@
 ﻿using Microsoft.JSInterop;
 
-namespace YadaYadaSoftware.CropperJs;
+namespace YadaYada.CropperJs;
 
 public class CropperInstance : IDisposable
 {

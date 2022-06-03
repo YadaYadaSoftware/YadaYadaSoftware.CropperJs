@@ -1,7 +1,7 @@
 ﻿using System.Text.Json.Serialization;
 using Microsoft.JSInterop;
 
-namespace YadaYadaSoftware.CropperJs;
+namespace YadaYada.CropperJs;
 
 //[JsonConverter(typeof(OptionsConverter))]
 public class Options

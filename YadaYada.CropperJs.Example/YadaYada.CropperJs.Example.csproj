@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\YadaYada.CropperJs\YadaYadaSoftware.CropperJs.csproj" />
+    <ProjectReference Include="..\YadaYada.CropperJs\YadaYada.CropperJs.csproj" />
   </ItemGroup>
 
 </Project>

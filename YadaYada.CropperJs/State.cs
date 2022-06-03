@@ -1,4 +1,4 @@
-﻿namespace YadaYadaSoftware.CropperJs;
+﻿namespace YadaYada.CropperJs;
 
 public class State
 {

@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.JSInterop;
 
-namespace YadaYadaSoftware.CropperJs;
+namespace YadaYada.CropperJs;
 
 public class CropperFactory
 {

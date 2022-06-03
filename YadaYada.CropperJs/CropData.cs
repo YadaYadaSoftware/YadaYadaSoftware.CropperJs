@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace YadaYadaSoftware.CropperJs;
+namespace YadaYada.CropperJs;
 
 public class CropData
 {

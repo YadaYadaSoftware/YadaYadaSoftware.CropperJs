@@ -1,6 +1,6 @@
 using Microsoft.JSInterop;
 
-namespace YadaYadaSoftware.CropperJs
+namespace YadaYada.CropperJs
 {
     // This class provides an example of how JavaScript functionality can be wrapped
     // in a .NET class for easy consumption. The associated JavaScript module is
