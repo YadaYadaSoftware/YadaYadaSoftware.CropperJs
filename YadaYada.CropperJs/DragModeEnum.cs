@@ -1,4 +1,4 @@
-﻿namespace YadaYada.CropperJs;
+﻿namespace YadaYadaSoftware.CropperJs;
 
 public enum DragModeEnum
 {

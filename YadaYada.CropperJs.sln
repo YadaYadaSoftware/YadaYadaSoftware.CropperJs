@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YadaYada.CropperJs", "YadaYada.CropperJs\YadaYada.CropperJs.csproj", "{A55A6936-075D-4B03-9101-44CCCA760792}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YadaYadaSoftware.CropperJs", "YadaYada.CropperJs\YadaYadaSoftware.CropperJs.csproj", "{A55A6936-075D-4B03-9101-44CCCA760792}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YadaYada.CropperJs.Example", "YadaYada.CropperJs.Example\YadaYada.CropperJs.Example.csproj", "{796AE6E3-7132-45A2-AD3B-808141DEE0F5}"
 EndProject

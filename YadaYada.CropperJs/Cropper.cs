@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.Extensions.Logging;
 
-namespace YadaYada.CropperJs;
+namespace YadaYadaSoftware.CropperJs;
 
 public partial class Cropper : IDisposable
 {

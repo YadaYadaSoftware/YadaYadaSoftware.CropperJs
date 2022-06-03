@@ -4,7 +4,7 @@ env:
 phases:
   install:
     commands:
-      - VERSION="${MAJOR}.$(date +%j).${CODEBUILD_BUILD_NUMBER}"
+      - VERSION="${MAJOR}.0.${CODEBUILD_BUILD_NUMBER}"
       - TOKEN=`aws codeartifact get-authorization-token  --domain yadayada --query authorizationToken --output text`
       - dotnet nuget add source --username aws --password $TOKEN --store-password-in-clear-text $YADAYADA_REPO
   build:

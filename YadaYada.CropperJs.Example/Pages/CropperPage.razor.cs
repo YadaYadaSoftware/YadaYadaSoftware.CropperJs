@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 using Microsoft.AspNetCore.Components;
 using YadaYada.CropperJs.Example.Annotations;
+using YadaYadaSoftware.CropperJs;
 
 namespace YadaYada.CropperJs.Example.Pages
 {
