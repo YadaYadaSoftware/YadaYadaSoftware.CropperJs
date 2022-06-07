@@ -23,8 +23,9 @@ public class CropperFactory
         using(_logger.BeginScope("{imageReference}.{imageReferenceId}='{Id}'", nameof(imageReference), nameof(imageReference.Id), imageReference.Id))
         {
             DotNetObjectReference<Options> objRef = DotNetObjectReference.Create(options);
-            
-            var cropperWrapper = await jSRuntime.InvokeAsync<IJSInProcessObjectReference>("import", "./_content/YadaYada.CropperJs/cropperWrapper.js");
+
+            string path = $"./_content/{typeof(Cropper).Assembly.GetName().Name}/cropperWrapper.js";
+            var cropperWrapper = await jSRuntime.InvokeAsync<IJSInProcessObjectReference>("import", path);
             var jSInstance = await cropperWrapper.InvokeAsync<IJSObjectReference>("createCropper", imageReference, objRef, options);
             var cropperInstance = new CropperInstance(jSInstance, objRef, cropperWrapper);
             _logger.LogInformation("Created:{0}", cropperInstance.GetHashCode());
