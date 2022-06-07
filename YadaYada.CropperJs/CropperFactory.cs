@@ -13,7 +13,7 @@ public class CropperFactory
     public CropperFactory(IJSRuntime jsRuntime, ILoggerProvider loggerProvider)
     {
         this._jsRuntime = jsRuntime;
-        _moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/YadaYada.CropperJs/cropper.js").AsTask());
+        _moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/YadaYadaSoftware.CropperJs/cropper.js").AsTask());
         _logger = loggerProvider.CreateLogger(this.GetType().FullName!);
     }
 

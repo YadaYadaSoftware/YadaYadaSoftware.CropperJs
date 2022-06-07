@@ -14,13 +14,9 @@
          @bind-DragMode="@this.DragMode"
          @bind-ShowTextBoxes="@this.ShowTextBoxes"
          @bind-ShowNativeCropperJsToolbar="@this.ShowNativeCropperJsToolbar"
-         @bind-ShowStatusBar="@this.ShowStatusBar"
          id="exampleCropper">
     
     <div>
-        <input type="checkbox" id="showStatusBar" @bind="@this.ShowStatusBar"/>
-        <label for="showStatusBar">Status Bar</label>
-        <span>|</span>
         <input id="showNativeCropperJsToolbar" type="checkbox" @bind="@this.ShowNativeCropperJsToolbar"/>
         <label for="showNativeCropperJsToolbar" >Show cropper.js toolbar</label>
         <span>|</span>

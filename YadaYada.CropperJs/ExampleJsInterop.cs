@@ -16,7 +16,7 @@ namespace YadaYadaSoftware.CropperJs
         public ExampleJsInterop(IJSRuntime jsRuntime)
         {
             moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>(
-               "import", "./_content/YadaYada.CropperJs/exampleJsInterop.js").AsTask());
+               "import", "./_content/YadaYadaSoftware.CropperJs/exampleJsInterop.js").AsTask());
         }
 
         public async ValueTask<string> Prompt(string message)

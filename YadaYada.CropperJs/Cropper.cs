@@ -274,7 +274,7 @@ public partial class Cropper : IDisposable
 
     [Parameter] public RenderFragment ChildContent { get; set; } = null!;
 
-    private bool ShowStatusBar => this.ShowCropInfo || this.ShowZoomLevel;
+    public bool ShowStatusBar => this.ShowCropInfo || this.ShowZoomLevel;
 
     [Parameter]
     public bool ShowZoomLevel
