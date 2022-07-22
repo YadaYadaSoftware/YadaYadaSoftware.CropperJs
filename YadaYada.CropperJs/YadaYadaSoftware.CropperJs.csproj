@@ -4,6 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+	  <RepositoryUrl>https://github.com/hounddog22030/YadaYadaSoftware.CropperJs.git</RepositoryUrl>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	<PackageReadmeFile>readme.md</PackageReadmeFile>
 	<PackageId>YadaYadaSoftware.CropperJs</PackageId>
